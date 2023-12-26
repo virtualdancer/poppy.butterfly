@@ -7,28 +7,29 @@ document.addEventListener("DOMContentLoaded", function () {
         poppy.style.left = x + "px";
         poppy.style.top = y + "px";
 
-        const heart = document.createElement("div");
-        heart.className = "heart";
-
-        const butterfly = document.createElement("div");
-        butterfly.className = "butterfly";
-
-        poppy.appendChild(heart);
-        poppy.appendChild(butterfly);
         field.appendChild(poppy);
 
-        poppy.addEventListener("mouseover", () => {
-            const moveX = Math.random() * 20 - 10;
-            const moveY = Math.random() * 20 - 10;
-            poppy.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            heart.style.transform = "scale(1.5) rotate(45deg)";
-            butterfly.style.transform = "scale(1.5) rotate(45deg)";
+        anime({
+            targets: poppy,
+            translateX: anime.random(-20, 20),
+            translateY: anime.random(-20, 20),
+            scale: anime.random(1, 1.5),
+            rotate: anime.random(-45, 45),
+            easing: 'easeInOutQuad',
+            duration: 500
         });
 
-        poppy.addEventListener("mouseout", () => {
-            poppy.style.transform = "translate(0, 0)";
-            heart.style.transform = "rotate(45deg)";
-            butterfly.style.transform = "rotate(45deg)";
+        poppy.addEventListener("click", function () {
+            anime({
+                targets: poppy,
+                scale: 0,
+                opacity: 0,
+                easing: 'easeOutQuad',
+                duration: 500,
+                complete: function (anim) {
+                    field.removeChild(anim.animatables[0].target);
+                }
+            });
         });
     }
 
