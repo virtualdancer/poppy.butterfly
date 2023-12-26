@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+.field {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #87CEEB; /* Ciel bleu */
+}
+
+.poppy {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #FF4500; /* Rouge coquelicot */
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #FF1493; /* Rose */
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transform: rotate(45deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.butterfly {
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    background-color: #8A2BE2; /* Violet */
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    transform: rotate(45deg);
+    transition: transform 0.3s ease-in-out;
+}
